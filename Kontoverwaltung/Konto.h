@@ -7,13 +7,13 @@ using namespace std;
 
 class Konto {
 private:
-	string Name;		//Name Kontoinhaber
-	float Saldo;		//Kontostand
+	string Name;				//Name Kontoinhaber
+	float AccountBalance;		//Kontostand
 
 
 public:
-	void kontoeroeffnung(const string fullName);
-	void einzahlen(const float Betrag);
-	void auszahlen(const float Betrag);
+	void accountopening(const string fullName);
+	void deposit(const float amount);
+	void payoff(const float amount);
 
 };

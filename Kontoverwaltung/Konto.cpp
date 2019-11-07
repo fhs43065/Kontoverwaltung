@@ -4,50 +4,49 @@
 
 
 
-void Konto::kontoeroeffnung(const string fullName) {
-	Saldo = 0;
+void Konto::accountopening(const string fullName) {
+	AccountBalance = 0;
 	Name = fullName;
-	string ausgabe = "Konto von " + Name + " wurde erfolgreich angelegt!\n";
+	string output = "Konto von " + Name + " wurde erfolgreich angelegt!\n";
 
-	std::cout << ausgabe;
+	std::cout << output;
 }
 
-void Konto::einzahlen(const float Betrag) {
+void Konto::deposit(const float amount) {
 	
 	if (Name.empty() == true)			//Prüfung ob Konto erstellt
 	{
-		string ausgabe = "ERROR!\nKonto nicht vorhanden!\n";
-		std::cout << ausgabe;
+		string output = "ERROR!\nKonto nicht vorhanden!\n";
+		std::cout << output;
 	}
 	else
 	{
-		Saldo += Betrag;
-		string ausgabe = "Auf " + Name + "'s Konto wurde erfolgreich ein Betrag iHv. " + Betrag + " eingezahlt.\n\nNeuer Kontostand: " + Saldo + "\n";
-		std::cout << ausgabe;
+		AccountBalance += amount;
+		string output = "Auf " + Name + "'s Konto wurde erfolgreich ein Betrag iHv. " + to_string(amount) + " eingezahlt.\n\nNeuer Kontostand: " + to_string(AccountBalance) + "\n";
+		std::cout << output;
 		
 	}
 }
 
-void Konto::auszahlen(const float Betrag) {
+void Konto::payoff(const float amount) {
 
 	if (Name.empty() == true)			//Prüfung ob Konto erstellt
 	{
-		string ausgabe = "ERROR!\nKonto nicht vorhanden!\n";
-		std::cout << ausgabe; string ausgabe = "ERROR!\nKonto nicht vorhanden!\n";
-		std::cout << ausgabe;
+		string output = "ERROR!\nKonto nicht vorhanden!\n";
+		std::cout << output; 
 	}
 	else
 	{
-		if (Saldo >= Betrag)
+		if (AccountBalance >= amount)	//Prüfen ob genug Geld am Konto
 		{
-			Saldo -= Betrag;
-			string ausgabe = "Von " + Name + "'s Konto wurde erfolgreich ein Betrag iHv. " + Betrag + " ausgezahlt.\n\nNeuer Kontostand: " + Saldo + "\n";
-			std::cout << ausgabe;
+			AccountBalance -= amount;
+			string output = "Von " + Name + "'s Konto wurde erfolgreich ein Betrag iHv. " + to_string(amount) + " ausgezahlt.\n\nNeuer Kontostand: " + to_string(AccountBalance) + "\n";
+			std::cout << output;
 		}
 		else
 		{
-			string ausgabe = "Von " + Name + "'s Konto wurde erfolgreich ein Betrag iHv. " + Betrag + " ausgezahlt.\n\nNeuer Kontostand: " + Saldo + "\n";
-			std::cout << ausgabe;
+			string output = "Der Auszahlungsbetrag iHv. " + to_string(amount) + " ueberschreitet den aktuellen Kontostand!\n";
+			std::cout << output;
 		}
 	}
 }
